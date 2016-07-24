@@ -24,21 +24,23 @@ func reqCore(s string) string {
     return string(msg.Data)
 }
 
-func formJson (m string, id string, b []byte) {
-    if len(b) < 0 {
-        t := `"body" : {}`
-    }
-    else {
-        t := string(b)
+func formJson (m string, id string, b []byte) string {
+    var t string
+
+    if len(b) == 0 {
+        t = `"body" : {}`
+    } else {
+        t = `"body" : ` + string(b)
     }
 
-    return `{"method": ` + m + `, "id": ` + id + `, ` + t + `}`
+    return `{"method": "` + m + `", "id": "` + id + `", ` + t + `}`
 }
 
 // GET /devices
 func (d DeviceAPI) Get() {
     println("Get all Devices")
     s := formJson("getDevices", "", d.RequestCtx.Request.Body())
+    println("SSSSS: ", s)
     d.Write(reqCore(s))
 }
 
