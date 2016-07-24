@@ -38,9 +38,7 @@ func formJson (m string, id string, b []byte) string {
 
 // GET /devices
 func (d DeviceAPI) Get() {
-    println("Get all Devices")
     s := formJson("getDevices", "", d.RequestCtx.Request.Body())
-    println("SSSSS: ", s)
     d.Write(reqCore(s))
 }
 

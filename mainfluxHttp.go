@@ -39,7 +39,7 @@ func main() {
 }
 
 func registerAPI() {
-    //iris.API("/status", api.StatusAPI{})
+    iris.API("/status", api.StatusAPI{})
     iris.API("/devices", api.DeviceAPI{})
     //iris.API("/channels", api.ChannelAPI{})
 }
